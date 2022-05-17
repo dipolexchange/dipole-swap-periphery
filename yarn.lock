@@ -2412,7 +2412,7 @@
 
 "@uniswap/v2-core@https://github.com/dipolexchange/dipole-swap-core.git#main":
   version "0.1.0"
-  resolved "https://github.com/dipolexchange/dipole-swap-core.git#f0a8755b9d7483d79c571ee27f2425b8f7df3208"
+  resolved "https://github.com/dipolexchange/dipole-swap-core.git#cf804526a3f1891fffa8a95a10ce5e12496533ee"
   dependencies:
     "@dipoleswap/dipole-swap-lib" "https://github.com/dipolexchange/dipole-swap-lib.git#main"
     "@ethersproject/solidity" "^5.6.0"
