@@ -3,8 +3,13 @@ import { solidity, MockProvider, createFixtureLoader, deployContract } from 'eth
 import { Contract } from 'ethers'
 import { BigNumber, bigNumberify } from 'ethers/utils'
 import { MaxUint256 } from 'ethers/constants'
+import IUniswapV2Pair from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 
 import { v2Fixture } from './shared/fixtures'
+import { expandTo18Decimals, getApprovalDigest, MINIMUM_LIQUIDITY } from './shared/utilities'
+
+import DeflatingERC20 from '../build/DeflatingERC20.json'
+import { ecsign } from 'ethereumjs-util'
 
 chai.use(solidity)
 
@@ -57,7 +62,7 @@ describe('UniswapV2Router02', () => {
     )
 
     await expect(router.getAmountsOut(bigNumberify(2), [token0.address])).to.be.revertedWith(
-      'DipoleLibrary: INVALID_PATH'
+      'UniswapV2Library: INVALID_PATH'
     )
     const path = [token0.address, token1.address]
     expect(await router.getAmountsOut(bigNumberify(2), path)).to.deep.eq([bigNumberify(2), bigNumberify(1)])

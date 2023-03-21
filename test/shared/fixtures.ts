@@ -4,8 +4,8 @@ import { deployContract } from 'ethereum-waffle'
 
 import { expandTo18Decimals } from './utilities'
 
-import DipoleFactory from '@uniswap/v2-core/build/contracts/DipoleFactory.json'
-import IDipolePair from '@uniswap/v2-core/build/contracts/IDipolePair.json'
+import DipoleFactory from '@uniswap/v2-core/build/DipoleFactory.json'
+import IDipolePair from '@uniswap/v2-core/build/IDipolePair.json'
 
 import ERC20 from '../../build/ERC20.json'
 import WETH9 from '../../build/WETH9.json'
@@ -13,7 +13,7 @@ import UniswapV1Exchange from '../../build/UniswapV1Exchange.json'
 import UniswapV1Factory from '../../build/UniswapV1Factory.json'
 import DipoleRouter01 from '../../build/DipoleRouter01.json'
 import DipoleMigrator from '../../build/DipoleMigrator.json'
-import DipoleRouter from '../../build/DipoleRouter.json'
+import DipoleRouter02 from '../../build/DipoleRouter02.json'
 import RouterEventEmitter from '../../build/RouterEventEmitter.json'
 
 const overrides = {
@@ -49,11 +49,11 @@ export async function v2Fixture(provider: Web3Provider, [wallet]: Wallet[]): Pro
   await factoryV1.initializeFactory((await deployContract(wallet, UniswapV1Exchange, [])).address)
 
   // deploy V2
-  const factoryV2 = await deployContract(wallet, DipoleFactory, [wallet.address], overrides)
+  const factoryV2 = await deployContract(wallet, DipoleFactory, [wallet.address])
 
   // deploy routers
   const router01 = await deployContract(wallet, DipoleRouter01, [factoryV2.address, WETH.address], overrides)
-  const router02 = await deployContract(wallet, DipoleRouter, [factoryV2.address, WETH.address], overrides)
+  const router02 = await deployContract(wallet, DipoleRouter02, [factoryV2.address, WETH.address], overrides)
 
   // event emitter for testing
   const routerEventEmitter = await deployContract(wallet, RouterEventEmitter, [])
