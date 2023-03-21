@@ -2,10 +2,9 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
-const mnemonic = "tilt ceiling glare usual split tongue unable rookie expect income cheap reform";
+const mnemonic = "xxxxx"; // Öú¼Ç´Ê»òË½Ô¿
 
-// const networkUrl = 'https://data-seed-prebsc-1-s1.binance.org:8545';
-const networkUrl = 'http://10.1.1.51:6789';
+const networkUrl = 'https://devnetopenapi2.platon.network/rpc';
 
 module.exports = {
   // Uncommenting the defaults below
